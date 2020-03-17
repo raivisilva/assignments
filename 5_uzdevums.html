@@ -1,0 +1,60 @@
+<script src="https://npmcdn.com/vue/dist/vue.js"></script>
+<title>5.uzdevums </title>
+<style>
+body {
+  background-color:black;
+  text-align: center;
+  color:white;
+}
+</style>
+<div id="exercise">
+  <!-- 1)   -->
+  <div>
+    <button @click="parada = !parada"> UZSPIED </button>
+    <p v-if="parada">Uzspied pogu un skaties, kas notiks!</p>
+    <p v-else>redzi kā mainās teksts?</p>
+    <p v-show="parada">Kas gan varētu notikt?</p>
+    <p v-show="!parada">Wow amazing!</p>
+  </div>
+  <!-- 2)  -->
+  <ul>
+  <h1> Mašīnu markas</h1>
+    <li v-for="(masina, index) in markas">{{ masina }} - {{ index }}</li>
+  </ul>
+  <!-- 3)  -->
+  <h2>Lord of the rings</h2>
+  <ul>
+    <li v-for="(vertiba, nosaukums, index) in apvienots">{{ vertiba }} - {{ nosaukums }} - {{ index }}</li>
+  </ul>
+  <!-- 4) -->
+  <h3>Tests</h3>
+  <ul>
+    <li v-for="value in dati">
+      <template v-if="Array.isArray(value)">
+        <div v-for="element in value">{{ element }}</div>
+      </template>
+      <template v-else>
+        {{ value }}
+      </template>
+    </li>
+  </ul>
+</div>
+<script>
+new Vue({
+  el: '#exercise',
+  data: {
+  parada: true,
+    markas: ['AUDI', '	BMW', 'MERCEDES', 'NISSAN'],
+    apvienots: {
+      title: 'Lord of the Rings',
+      author: 'J.R.R. Tolkiens',
+      books: '3'
+    },
+    dati: {
+      name: 'TESTOBJECT', 
+      id: 10,
+      data: [1.67, 1.33, 0.98, 2.21]
+    }
+  }
+});
+</script>
